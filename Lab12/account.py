@@ -1,8 +1,8 @@
 class Account(name=input()):
 
     def __init__(self, name: str):
-        self._account_name = name
-        self._account_balance = 0
+        self.__account_name = name
+        self.__account_balance = 0
 
     def deposit(self, amount: float):
         """
@@ -11,8 +11,8 @@ class Account(name=input()):
         :param amount: This is the amount to be added
         :return: Whether the process was successful or not
         """
-        if amount >= 0:
-            self._account_balance += amount
+        if amount >= 0 or amount <= self.__account_balance:
+            self.__account_balance += amount
             return True
         else:
             return False
@@ -26,7 +26,7 @@ class Account(name=input()):
         """
 
         if amount >= 0:
-            self._account_balance -= amount
+            self.__account_balance -= amount
             return True
         else:
             return False
@@ -36,11 +36,11 @@ class Account(name=input()):
         Returns the account's balance
         :return: The account balance
         """
-        return self._account_balance
+        return self.__account_balance
 
     def get_name(self):
         """
         Returns the account's name
         :return: The account name
         """
-        return self._account_name
+        return self.__account_name
